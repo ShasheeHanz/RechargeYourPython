@@ -1,0 +1,180 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/LakshanJayawardana/RechargeYourPython/blob/main/Python%20challenge\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Task 1"
+      ],
+      "metadata": {
+        "id": "5UdP_1hbGprI"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "3K02htLv-JhT",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "c82a0e2a-cce5-448c-a189-38e506e470ee"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "9572\n"
+          ]
+        }
+      ],
+      "source": [
+        "def merge_sort_and_count(arr):\n",
+        "    if len(arr) == 1:\n",
+        "        return arr, 0\n",
+        "    mid = len(arr) // 2\n",
+        "    left, left_count = merge_sort_and_count(arr[:mid])\n",
+        "    right, right_count = merge_sort_and_count(arr[mid:])\n",
+        "    merged = []\n",
+        "    i = j = 0\n",
+        "    count = 0\n",
+        "    while i < len(left) and j < len(right):\n",
+        "        if left[i] <= right[j]:\n",
+        "            merged.append(left[i])\n",
+        "            i += 1\n",
+        "        else:\n",
+        "            merged.append(right[j])\n",
+        "            j += 1\n",
+        "            count += len(left) - i\n",
+        "    merged += left[i:]\n",
+        "    merged += right[j:]\n",
+        "    return merged, left_count + right_count + count\n",
+        "\n",
+        "X = [221,349,762,227,515,498,284,379,586,497,456,200,426,421,418,847,365,405,\n",
+        "     591,339,823,682,553,342,375,391,744,221,214,592,239,261,416,687,671,660,\n",
+        "     674,835,790,397,796,386,390,795,694,178,845,185,325,443,140,435,138,731,\n",
+        "     473,521,491,193,801,359,735,128,901,561,165,225,743,666,126,367,729,908,\n",
+        "     551,672,491,698,896,863,133,785,315,178,374,211,231,280,715,196,214,178,\n",
+        "     548,129,406,686,884,681,763,158,161,554,558,576,457,871,660,145,645,361,\n",
+        "     748,340,332,838,703,474,706,458,762,697,145,650,518,294,404,237,254,482,\n",
+        "     157,335,441,462,679,894,691,311,275,644,265,672,123,751,894,492,464,242,\n",
+        "     396,886,566,648,632,134,647,296,735,510,448,145,474,604,756,498,815,167,\n",
+        "     771,606,752,682,219,298,131,725,595,286,232,574,362,168,179,837,864,320,\n",
+        "     155,138,605,290,339,834,335,715,245,864,319,677,726,231,394,848,735,568]\n",
+        "\n",
+        "_, count = merge_sort_and_count(X)\n",
+        "print(count)\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Task 2"
+      ],
+      "metadata": {
+        "id": "0NFYrQJIGsVv"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "sequence = [1, 3]\n",
+        "for i in range(2, 1000000):\n",
+        "    last_digit = sequence[-2] % 10\n",
+        "    new_element = sequence[-1] + last_digit\n",
+        "    sequence.append(new_element)\n",
+        "print(sequence[999999])"
+      ],
+      "metadata": {
+        "id": "IToMZFX1Gtah",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 171
+        },
+        "outputId": "e682ae84-402a-4da7-feaa-5c2b51c1721c"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-6-2e12e3b7c3d0>\u001b[0m in \u001b[0;36m<cell line: 1>\u001b[0;34m()\u001b[0m\n\u001b[0;32m----> 1\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0msequence\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;36m999999\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m: name 'sequence' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Task 3"
+      ],
+      "metadata": {
+        "id": "WlRtwPRMGuE9"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "num_valid = 2**10 * 2**10\n",
+        "print(num_valid)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8BetIxtfHb8y",
+        "outputId": "772d4f70-d1c9-4eea-95bb-650529c8f98f"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "1048576\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "EdiiNB2tKSDZ"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
